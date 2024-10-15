@@ -37,17 +37,14 @@
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-item menu-open">
-
-                </li>
                 <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
+                    <a href="{{route('user.index')}}" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>
                            User
                         <span class="right badge badge-danger">New</span>
                         </p>
-                        </a>
+                    </a>
                 </li>
             </ul>
         </nav>

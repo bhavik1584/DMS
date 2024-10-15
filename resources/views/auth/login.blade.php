@@ -21,10 +21,13 @@
   </div>
   <!-- /.login-logo -->
   <div class="card">
+    @component('component.common.alert')
+    @endcomponent
     <div class="card-body login-card-body">
       <p class="login-box-msg">Sign in to start your session</p>
 
-      <form action="../../index3.html" method="post" id="login">
+      <form action="{{route('auth.login')}}" method="post" id="login">
+        @csrf
         <div class="row">
             <div class="input-group mb-3">
                 <input type="email" name="email" class="form-control" placeholder="Email">

@@ -1,14 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\{UserController,LoginController};
 
 Route::get('/', function () {
-    return view('main');
+    return view('auth.login');
 });
-
-Route::resource('user', UserController::class);
-
 Route::get('login', function () {
     return view('auth.login');
+});
+Route::post('login',[LoginController::class,'login'])->name('auth.login');
+Route::middleware(['auth'])->prefix('dashboard')->group(function(){
+    Route::resource('user', UserController::class);
 });
