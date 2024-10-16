@@ -1,9 +1,15 @@
-@if (session()->has('error'))
-     <li class="bg-danger text-center">{{session()->get('error')}}</li>
-@endif
+<div class="bg-danger">
+    @if (session()->has('error'))
+        <ol>
+            <li>{{ session()->get('error') }}</li>
+        </ol>
+    @endif
 
-@if (count($errors))
-   @foreach ($errors->all() as $error)
-     <li class="bg-danger text-center">{{$error}}</li>
-   @endforeach 
-@endif
+    @if (count($errors))
+        <ol>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ol>
+    @endif
+</div>

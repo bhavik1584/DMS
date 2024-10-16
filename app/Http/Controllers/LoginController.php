@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\{LoginRequest,RegisterRequest};
 use Auth;
 
 class LoginController extends Controller
 {
-    public function login(UserRequest $request){
+    public function login(LoginRequest $request){
         try {
 
             $inputs = $request->except('_token');
@@ -25,5 +25,14 @@ class LoginController extends Controller
              return back()->withError('something wrong please try again!');
         }
         
+    }
+
+    public function register(RegisterRequest $request){
+        dd($request->all());
+        try {
+            //code...
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 }
