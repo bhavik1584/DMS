@@ -6,7 +6,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Observers\UserObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 
+#[ObservedBy([UserObserver::class])]
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -20,6 +23,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_active',
+        'created_by',
+        'created_from_ip',
+        'updated_by',
+        'updated_from_ip'
     ];
 
     /**

@@ -1,20 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{UserController,LoginController};
+use App\Http\Controllers\{UserController,AuthController,DashbordController};
 
-Route::get('/', function () {
-    return view('auth.login');
-});
-Route::get('login', function () {
-    return view('auth.login');
-})->name('login');
-Route::get('register', function () {
-    return view('auth.register');
-})->name('register');
+Route::get('/',[AuthController::class,'login']);
+Route::get('login',[AuthController::class,'login'])->name('auth.login');
+Route::get('register', [AuthController::class,'register'])->name('auth.register');
+Route::get('logout', [AuthController::class,'logout'])->name('auth.logout');
 
-Route::post('login',[LoginController::class,'login'])->name('auth.login');
-Route::post('register',[LoginController::class,'register'])->name('auth.register');
+Route::post('login',[AuthController::class,'postLogin'])->name('auth.login');
+Route::post('register',[AuthController::class,'postRegister'])->name('auth.register');
+
 Route::middleware(['auth'])->prefix('dashboard')->group(function(){
     Route::resource('user', UserController::class);
+    Route::get('/',DashbordController::class)->name('dashboard');
 });
