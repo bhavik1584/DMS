@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\{LoginRequest, RegisterRequest};
-use App\Services\UserService;
+use App\Services\AuthService;
 
 class AuthController extends Controller
 {
-    private $userService;
-    public function __construct(UserService $userService)
+    private $authService;
+    public function __construct(AuthService $authService)
     {
         $this->middleware('guest')->except(['logout']);
         $this->middleware('auth')->only(['logout']);
-        $this->userService = $userService;
+        $this->authService = $authService;
     }
 
     public function login()
@@ -24,7 +24,7 @@ class AuthController extends Controller
         $input = $request->validated();
         try {
 
-            $is_auth = $this->userService->login($input);
+            $is_auth = $this->authService->login($input);
             if ($is_auth) {
                 return redirect('dashboard')->withSuccess('hello');
             } else {
@@ -44,13 +44,13 @@ class AuthController extends Controller
     public function postRegister(RegisterRequest $request)
     {
         $input = $request->validated();
-        $user = $this->userService->register($input);
+        $user = $this->authService->register($input);
         return redirect('dashboard')->withSuccess('hello');
 
     }
     public function logout()
     {
-        $this->userService->logout();
+        $this->authService->logout();
         return redirect('login')->withSuccess('hello');
 
     }

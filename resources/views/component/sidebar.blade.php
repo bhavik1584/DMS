@@ -46,6 +46,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('auth.logout')}}" class="nav-link">
+                        <i class="nav-icon fas fa-power-off"></i>
+                        <p>
+                           {{__('auth.logout')}}
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

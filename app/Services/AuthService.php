@@ -4,7 +4,7 @@ namespace App\Services;
 use Auth;
 use App\Models\User;
 
-class UserService
+class AuthService
 {
    public function login($input)
    {
