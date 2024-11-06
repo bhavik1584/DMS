@@ -3,9 +3,11 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            Header
+            <a href="{{route('user.create')}}" class="btn  btn-outline-dark float-right">
+                <i class="fas fa-plus"></i>
+            </a>
         </div>
-        <div class="card-body">
+        <div class="card-body overflow-auto">
             {{$dataTable->table()}}
         </div>
     </div>
