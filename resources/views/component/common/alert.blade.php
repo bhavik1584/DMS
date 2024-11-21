@@ -13,3 +13,10 @@
         </ol>
     @endif
 </div>
+<div class="bg-success">
+    @if (session()->has('success'))
+        <ul>
+            <li>{{ session()->get('success') }}</li>
+        </ol>
+    @endif
+</div>

@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use App\DataTables\UserDataTable;
+use App\Services\UserService;
 
 class UserController extends Controller
 {
+    private $userService; 
+    public function __construct(UserService $userService){
+        $this->userService = $userService;
+        view()->share('title',__('user.title'));
+    }
     /**
      * Display a listing of the resource.
      */
@@ -27,9 +33,18 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        dd($request->all());
+        $input = $request->validated();
+        $user = $this->userService->create($input);
+
+        if ($user) {
+            return redirect()->route('user.index')->withSuccess(__('common_message.create_success',['name' => 'User']));
+        }
+        else{
+            return redirect()->route('user.create')->withErrors(__('common_message.error',['name' => 'User']));
+        }
+
     }
 
     /**

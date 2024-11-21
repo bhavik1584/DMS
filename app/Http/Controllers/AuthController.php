@@ -26,13 +26,13 @@ class AuthController extends Controller
 
             $is_auth = $this->authService->login($input);
             if ($is_auth) {
-                return redirect('dashboard')->withSuccess('hello');
+                return redirect('dashboard')->withSuccess(__('auth.auth_login'));
             } else {
-                return back()->withError('invalid cradential');
+                return back()->withError(__('auth.failed'));
             }
 
         } catch (\Throwable $th) {
-            return back()->withError('something wrong please try again!');
+            return back()->withError(__('common_message.error'));
         }
 
 
@@ -45,13 +45,13 @@ class AuthController extends Controller
     {
         $input = $request->validated();
         $user = $this->authService->register($input);
-        return redirect('dashboard')->withSuccess('hello');
+        return redirect('dashboard')->withSuccess(__('auth.auth_login'));
 
     }
     public function logout()
     {
         $this->authService->logout();
-        return redirect('login')->withSuccess('hello');
+        return redirect('login')->withSuccess(__('auth.auth_logout'));
 
     }
 }
