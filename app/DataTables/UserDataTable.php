@@ -11,9 +11,14 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use App\Services\DataTableService;
 
 class UserDataTable extends DataTable
 {
+    private $dataTableService;
+    public function __construct(DataTableService $dataTableService){
+        $this->dataTableService = $dataTableService;
+    }
     /**
      * Build the DataTable class.
      *
@@ -22,7 +27,8 @@ class UserDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action','action')
+            ->addColumn('action',fn($row) => $this->dataTableService->getActionHtml($row))
+            ->rawColumns(['action'])
             ->setRowId('id');
     }
 

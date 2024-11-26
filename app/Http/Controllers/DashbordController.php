@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class DashbordController extends Controller
 {
+    public function __construct()
+    {
+        view()->share(['title'=>'Dashboard']);
+    }
     /**
      * Handle the incoming request.
      */
