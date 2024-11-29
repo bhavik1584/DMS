@@ -28,7 +28,9 @@ class UserDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action',fn($row) => $this->dataTableService->getActionHtml($row))
-            ->rawColumns(['action'])
+            ->addColumn('name',fn($row)=> ($row->first_name ?? '') . ' ' . ($row->middle_name ?? '') . ' ' . ($row->last_name ?? ''))
+            ->addColumn('status','status')
+            ->rawColumns(['action','status'])
             ->setRowId('id');
     }
 
@@ -76,8 +78,12 @@ class UserDataTable extends DataTable
                   ->addClass('text-center'),
             Column::make('id'),
             Column::make('name'),
+            Column::make('email'),
+            Column::make('mobile_no'),
+            Column::make('address'),
             Column::make('created_at'),
             Column::make('updated_at'),
+            Column::make('status'),
         ];
     }
 

@@ -6,6 +6,8 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Http\Request;
 use App\DataTables\UserDataTable;
 use App\Services\UserService;
+use App\Models\User;
+use View;
 
 class UserController extends Controller
 {
@@ -60,7 +62,9 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user =  $this->userService->edit($id);
+        $this->data['user'] = $user;
+        return view('user.edit', $this->data);
     }
 
     /**
@@ -68,7 +72,7 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        dd($request->all());
     }
 
     /**

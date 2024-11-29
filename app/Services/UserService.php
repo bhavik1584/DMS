@@ -13,6 +13,13 @@ class UserService{
         return $user;
     }
 
+    public function edit($id){
+        
+        $user = User::findOrFail($id);
+        
+        return $user;
+    }
+
 }
 
 
