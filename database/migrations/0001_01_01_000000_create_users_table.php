@@ -25,7 +25,7 @@ return new class extends Migration
             $table->integer('created_by')->nullable();
             $table->ipAddress('created_from_ip')->nullable();
             $table->integer('updated_by')->nullable();
-            $table->integer('updated_from_ip')->nullable();
+            $table->ipAddress('updated_from_ip')->nullable();
             $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();

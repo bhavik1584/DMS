@@ -10,6 +10,7 @@
             <form action="{{ route('user.update',$user->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
+                <input type="hidden" name="id" value={{$user->id}}>
                 @include('user.form')
             </form>
         </div>

@@ -8,11 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Observers\UserObserver;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 #[ObservedBy([UserObserver::class])]
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable , SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -20,14 +21,22 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'middle_name',
+        'last_name',
+        'mobile_no',
+        'address',
         'email',
         'password',
-        'is_active',
+        'is_active',	
         'created_by',
         'created_from_ip',
         'updated_by',
-        'updated_from_ip'
+        'updated_from_ip',		
+        'deleted_at',
+        'remember_token',	
+        'created_at',	
+        'updated_at'
     ];
 
     /**
@@ -50,6 +59,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'is_active'=>'bool'
         ];
     }
 }

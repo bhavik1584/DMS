@@ -10,5 +10,5 @@ return [
     'profile_image'=>'Profile Image',
     'mobile_no'=>'Mobile No',
     'password'=>'Password',
-    'confirm_password'=>'Confirn Password'
+    'confirm_password'=>'Confirn Password',
 ];

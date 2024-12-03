@@ -28,8 +28,8 @@ class UserRequest extends FormRequest
             'email'=>'required|email',
             'address'=>'required',
             'mobile_no'=>'required|min:10',
-            'password'=> 'required',
-            'confirm_password'=>'required|same:password',
+            'password'=> 'required_without:id',
+            'confirm_password'=>'required_without:id|same:password',
         ];
     }
     public function messages(): array{

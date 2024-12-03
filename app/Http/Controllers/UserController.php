@@ -70,9 +70,17 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        dd($request->all());
+    public function update(UserRequest $request, string $id)
+    { 
+        $input = array_filter($request->validated());
+        $user = $this->userService->update($id,$input);
+
+        if ($user) {
+            return redirect()->route('user.index')->withSuccess(__('common_message.update_success'));
+        }
+        else {
+            return redirect()->route('user.index')->withErrors(__('common_message.error'));
+        }
     }
 
     /**

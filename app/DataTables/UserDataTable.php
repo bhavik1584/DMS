@@ -29,7 +29,7 @@ class UserDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action',fn($row) => $this->dataTableService->getActionHtml($row))
             ->addColumn('name',fn($row)=> ($row->first_name ?? '') . ' ' . ($row->middle_name ?? '') . ' ' . ($row->last_name ?? ''))
-            ->addColumn('status','status')
+            ->addColumn('status',fn($row)=>$row->is_active)
             ->rawColumns(['action','status'])
             ->setRowId('id');
     }

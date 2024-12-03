@@ -29,7 +29,7 @@
         @csrf
         <div class="row">
             <div class="input-group mb-3">
-                <input type="text" name="name" class="form-control" placeholder="Name">
+                <input type="text" name="first_name" class="form-control" placeholder="Name">
                 <div class="input-group-append">
                   <div class="input-group-text">
                     <span class="fas fa-user"></span>
@@ -95,7 +95,7 @@
         </a>
       </div>
 
-      <a href="{{route('auth.login')}}" class="text-center">I already have a membership</a>
+      <a href="{{route('auth.login.get')}}" class="text-center">I already have a membership</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->

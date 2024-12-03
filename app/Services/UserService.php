@@ -20,6 +20,14 @@ class UserService{
         return $user;
     }
 
+    public function update($id,$input){
+        
+        $user = User::findOrFail($id);
+        $user->update($input);
+        
+        return $user;
+    }
+
 }
 
 
