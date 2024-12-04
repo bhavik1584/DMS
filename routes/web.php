@@ -1,7 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{UserController,AuthController,DashbordController};
+use App\Http\Controllers\{
+    UserController,
+    AuthController,
+    DashbordController,
+    RoleController
+};
 
 Route::get('/',[AuthController::class,'login']);
 Route::get('login',[AuthController::class,'login'])->name('auth.login.get');
@@ -13,5 +18,6 @@ Route::post('register',[AuthController::class,'postRegister'])->name('auth.regis
 
 Route::middleware(['auth'])->prefix('dashboard')->group(function(){
     Route::resource('user', UserController::class);
+    Route::resource('role', RoleController::class);
     Route::get('/',DashbordController::class)->name('dashboard');
 });

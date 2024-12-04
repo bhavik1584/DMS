@@ -47,6 +47,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('role.index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-key"></i>
+                        <p>
+                           Role
+                        {{-- <span class="right badge badge-danger">New</span> --}}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('auth.logout')}}" class="nav-link">
                         <i class="nav-icon fas fa-power-off"></i>
                         <p>
