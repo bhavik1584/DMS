@@ -5,7 +5,8 @@ use App\Http\Controllers\{
     UserController,
     AuthController,
     DashbordController,
-    RoleController
+    RoleController,
+    DmsController
 };
 
 Route::get('/',[AuthController::class,'login']);
@@ -17,7 +18,13 @@ Route::post('login',[AuthController::class,'postLogin'])->name('auth.login.post'
 Route::post('register',[AuthController::class,'postRegister'])->name('auth.register');
 
 Route::middleware(['auth'])->prefix('dashboard')->group(function(){
+    //user
     Route::resource('user', UserController::class);
+    //role
     Route::resource('role', RoleController::class);
+    //dms
+    Route::resource('dms',DmsController::class);
+
+    //dashboard
     Route::get('/',DashbordController::class)->name('dashboard');
 });

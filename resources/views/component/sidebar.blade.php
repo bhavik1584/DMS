@@ -56,6 +56,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('dms.index')}}" class="nav-link">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>
+                           Dms
+                        {{-- <span class="right badge badge-danger">New</span> --}}
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('auth.logout')}}" class="nav-link">
                         <i class="nav-icon fas fa-power-off"></i>
                         <p>
