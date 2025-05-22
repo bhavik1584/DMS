@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\DmsService;
 
 class DmsController extends Controller
 {
-    public function __construct(){
+    private $dmsService;
+    public function __construct(DmsService $dmsService){
 
+        $this->dmsService = $dmsService;
         view()->share('title',__('dms.title'));
     }
     /**
@@ -15,7 +18,8 @@ class DmsController extends Controller
      */
     public function index()
     {
-        return view('dms.index');
+        $this->data['folders'] = ['user','group','1','2'];
+        return view('dms.index',$this->data);
     }
 
     /**
@@ -64,5 +68,12 @@ class DmsController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function showFolder(Request $request){
+
+        $this->data['folders'] = $this->dmsService->getDmsMapByKey($request->folder);;
+        return view('dms.index',$this->data);
+
     }
 }

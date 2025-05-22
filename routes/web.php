@@ -24,6 +24,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function(){
     Route::resource('role', RoleController::class);
     //dms
     Route::resource('dms',DmsController::class);
+    Route::get('dms-folder',[DmsController::class,'showFolder'])->name('dms.showfolder');
 
     //dashboard
     Route::get('/',DashbordController::class)->name('dashboard');

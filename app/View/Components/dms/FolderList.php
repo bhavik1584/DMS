@@ -6,14 +6,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class folder extends Component
+class FolderList extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($props)
     {
-        //
+        $this->props = $props;
     }
 
     /**
@@ -21,6 +21,7 @@ class folder extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.dms.folder');
+        $this->data['props'] = $this->props;
+        return view('components.dms.folder-list',$this->data);
     }
 }

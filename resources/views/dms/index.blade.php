@@ -3,6 +3,7 @@
 
 @section('content')
 
-<x-dms.folder/>
+
+<x-dms.folder-list :props="['folders'=>$folders]"/>
 
 @endsection
